@@ -6,6 +6,9 @@ app = Flask(__name__)
 def hello_world():
     return render_template("index.html")
 
+@app.get("/room")
+def room():
+    return render_template("index.html")
 
 @app.get("/api/chat/<room>")
 def get(room):
