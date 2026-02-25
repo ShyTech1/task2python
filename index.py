@@ -16,9 +16,9 @@ file_lock = Lock()
 def room_file(room):
     return CHATS_DIR / f"{room}.txt"
 
-def format_line(username, message):
+def format_line(username, msg):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return f"[{ts}] {username}: {message}"
+    return f"[{ts}] {username}: {msg}"
 
 @app.get("/api/chat/<room>")
 def hello_world(room):
@@ -28,7 +28,7 @@ def hello_world(room):
 @app.post("/api/chat/<room>")
 def post_chat(room):
     username = (request.form.get("username") or "").strip()
-    message = (request.form.get("message") or "").strip()
+    message = (request.form.get("msg") or "").strip()
 
     if not username or not message:
         return Response("Missing data", status=400)
