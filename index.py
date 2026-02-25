@@ -22,13 +22,16 @@ def format_line(username, msg):
 
 @app.get("/api/chat/<room>")
 def hello_world(room):
+    # return "[2024-09-10 14:00:51] Roey: Hi everybody!"
     return render_template("index.html")
+    
 
 
 @app.post("/api/chat/<room>")
 def post_chat(room):
     username = (request.form.get("username") or "").strip()
     message = (request.form.get("msg") or "").strip()
+
 
     if not username or not message:
         return Response("Missing data", status=400)
