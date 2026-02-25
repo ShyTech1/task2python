@@ -24,9 +24,6 @@ def format_line(username, message):
 def hello_world():
     return render_template("index.html")
 
-@app.get("/room")
-def room():
-    return render_template("index.html")
 
 @app.get("/api/chat/<room>")
 def post_chat(room):
