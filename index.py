@@ -20,8 +20,8 @@ def format_line(username, message):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return f"[{ts}] {username}: {message}"
 
-@app.get("/")
-def hello_world():
+@app.get("/api/chat/<room>")
+def hello_world(room):
     return render_template("index.html")
 
 
@@ -40,7 +40,6 @@ def post_chat(room):
         with path.open("a", encoding="utf-8") as f:
             f.write(line + "\n")
     return Response("OK", status=201)
-
 
 
 
