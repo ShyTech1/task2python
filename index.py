@@ -25,7 +25,7 @@ def hello_world():
     return render_template("index.html")
 
 
-@app.get("/api/chat/<room>")
+@app.post("/api/chat/<room>")
 def post_chat(room):
     username = (request.form.get("username") or "").strip()
     message = (request.form.get("message") or "").strip()
@@ -40,6 +40,7 @@ def post_chat(room):
         with path.open("a", encoding="utf-8") as f:
             f.write(line + "\n")
     return Response("OK", status=201)
+
 
 
 
